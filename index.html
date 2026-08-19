@@ -309,7 +309,7 @@ const MODE_META = {
   sentence:  { label: '例句挖空選擇', icon: 'format_quote' },
   listening: { label: '聽力拼寫',     icon: 'hearing' }
 };
-const GAP_TABLE = [1, 2, 4, 8, 16, 30]; // Leitner box -> 間隔題數
+const GAP_TABLE = [5, 10, 15, 20, 30, 50]; // Leitner box -> 間隔題數
 
 let STATE = {
   modes: {} // per mode: { queue, correct:{}, wrong:{}, totalCorrect, totalWrong, box:{}, current, awaiting }
