@@ -22,8 +22,10 @@
   --red-soft:#fbe6e0;
 }
 *{box-sizing:border-box;}
+html{ overflow-x:hidden; }
 body{
   margin:0;
+  overflow-x:hidden;
   background:var(--paper);
   background-image:
     radial-gradient(circle at 1px 1px, rgba(20,27,46,0.06) 1px, transparent 0);
@@ -56,7 +58,9 @@ header.top{
 .brand h1{ font-size:20px; margin:0; font-weight:700; }
 .brand p{ font-size:12px; margin:2px 0 0; color:#c7c1ad; }
 
-.top-actions{ display:flex; align-items:center; gap:10px; }
+.top-actions{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; max-width:100%; }
+.source-status{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.source-status.hidden{ display:none; }
 .pill{
   display:flex; align-items:center; gap:6px;
   background:rgba(255,255,255,0.08);
@@ -192,6 +196,43 @@ main{ max-width:1080px; margin:0 auto; padding:26px 20px 60px; }
   padding:9px; border-radius:10px; font-size:12px; cursor:pointer; font-weight:600;
 }
 .ghost-btn:hover{ border-color:var(--red); color:var(--red); }
+
+/* ============ 手機／小螢幕優化 ============ */
+@media (max-width: 640px){
+  header.top{
+    flex-direction:column;
+    align-items:flex-start;
+    padding:16px 16px;
+    gap:12px;
+  }
+  .brand-badge{ width:38px; height:38px; font-size:12px; }
+  .brand h1{ font-size:17px; }
+  .brand p{ font-size:11px; }
+  .top-actions{ width:100%; }
+  .pill, .upload-label{ font-size:11px; padding:6px 10px; }
+  .upload-label{ flex-shrink:0; }
+
+  main{ padding:18px 14px 48px; }
+  .tabs{ gap:6px; margin-bottom:16px; }
+  .mode-tab{ padding:8px 12px; font-size:12px; flex:1 1 auto; justify-content:center; }
+  .mode-tab .material-icons-round{ font-size:16px; }
+
+  .card{ padding:18px; border-radius:14px; }
+
+  .quiz-prompt{ font-size:22px; margin-bottom:18px; }
+  .quiz-prompt--sentence{ font-size:16px; }
+  .options-grid{ grid-template-columns:1fr; }
+  .option-btn{ padding:12px 14px; font-size:13.5px; }
+
+  .listening-controls{ gap:12px; }
+  .mask-hint{ font-size:20px; letter-spacing:4px; padding:9px 12px; }
+  .listen-form{ flex-direction:column; }
+  .submit-btn{ padding:12px; }
+
+  .stats-top{ grid-template-columns:repeat(2,1fr); }
+  .feedback-word{ font-size:15.5px; }
+  .quiz-label{ font-size:11px; }
+}
 </style>
 </head>
 <body>
@@ -205,8 +246,10 @@ main{ max-width:1080px; margin:0 auto; padding:26px 20px 60px; }
     </div>
   </div>
   <div class="top-actions">
-    <span class="pill" id="data-source-pill"><span class="material-icons-round" style="font-size:14px;">hourglass_top</span> 載入中…</span>
-    <span class="pill"><span class="material-icons-round" style="font-size:14px;">database</span> 題庫 <b id="word-count">0</b> 筆</span>
+    <div class="source-status" id="source-status">
+      <span class="pill" id="data-source-pill"><span class="material-icons-round" style="font-size:14px;">hourglass_top</span> 載入中…</span>
+      <span class="pill"><span class="material-icons-round" style="font-size:14px;">database</span> 題庫 <b id="word-count">0</b> 筆</span>
+    </div>
     <label class="upload-label">
       <span class="material-icons-round" style="font-size:14px;">upload_file</span> 上傳題庫 JSON
       <input type="file" id="json-file-input" accept=".json">
@@ -738,7 +781,8 @@ function handleFileUpload(evt) {
       loadStats();
       el('word-count').textContent = VOCAB.length;
       switchMode(currentMode);
-      setSourceStatus('<span class="material-icons-round" style="font-size:14px;">cloud_done</span> ' + escapeHtml(file.name) + '（手動上傳）', false);
+      // 手動上傳也視為外源資料，成功後同樣隱藏提示徽章
+      setSourceStatus('<span class="material-icons-round" style="font-size:14px;">cloud_done</span> ' + escapeHtml(file.name) + '（手動上傳）', false, true);
       alert('已成功載入 ' + VOCAB.length + ' 筆單字資料！');
     } catch (err) {
       alert('載入失敗：JSON 格式無法解析。' + err.message);
@@ -748,11 +792,14 @@ function handleFileUpload(evt) {
 }
 
 /* ============ 啟動 ============ */
-function setSourceStatus(html, warn) {
+function setSourceStatus(html, warn, hide) {
   const pill = el('data-source-pill');
-  if (!pill) return;
-  pill.innerHTML = html;
-  pill.classList.toggle('pill-warn', !!warn);
+  const container = el('source-status');
+  if (pill) {
+    pill.innerHTML = html;
+    pill.classList.toggle('pill-warn', !!warn);
+  }
+  if (container) container.classList.toggle('hidden', !!hide);
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -762,13 +809,15 @@ window.addEventListener('DOMContentLoaded', () => {
       if (!Array.isArray(data) || !data.length) throw new Error('資料為空或格式不符');
       buildVocab(data);
       initApp();
-      setSourceStatus('<span class="material-icons-round" style="font-size:14px;">cloud_done</span> toeic_vocabulary.json', false);
+      // 已成功讀取外源資料（toeic_vocabulary.json），隱藏提示徽章
+      setSourceStatus('<span class="material-icons-round" style="font-size:14px;">cloud_done</span> toeic_vocabulary.json', false, true);
     })
     .catch(err => {
       console.warn('讀取 toeic_vocabulary.json 失敗，改用內建範例資料：', err);
       buildVocab(window.__DEFAULT_VOCAB__ || []);
       initApp();
-      setSourceStatus('<span class="material-icons-round" style="font-size:14px;">warning</span> 內建範例資料（找不到 toeic_vocabulary.json）', true);
+      // 使用內建範例資料時保留提示，讓使用者知道尚未讀到外部題庫
+      setSourceStatus('<span class="material-icons-round" style="font-size:14px;">warning</span> 內建範例資料（找不到 toeic_vocabulary.json）', true, false);
     });
   el('json-file-input').addEventListener('change', handleFileUpload);
 });
