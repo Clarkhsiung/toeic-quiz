@@ -38,7 +38,6 @@ your-repo/
   ```
   再開啟 `http://localhost:8000/index.html`。直接用 `file://` 開啟時瀏覽器會封鎖 fetch，此時會自動退回內建的少量範例資料。
 
-##資料庫來源
+[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
-Name: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
-Link: https://creativecommons.org/licenses/by-sa/4.0/
+**資料庫來源：** [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/)
