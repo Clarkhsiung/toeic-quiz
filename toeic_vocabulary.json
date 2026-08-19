@@ -1,0 +1,417 @@
+[
+  {
+    "english_word": "A be followed by B",
+    "chinese_definition": "接著，隨後，緊隨其後",
+    "star_rating": 4,
+    "toeic_score_range": "600-780",
+    "category": "辦公日常",
+    "parts_of_speech": [
+      "verb"
+    ],
+    "word_forms": [
+      {
+        "part_of_speech": "verb",
+        "forms": [
+          "A be followed by B",
+          "follows",
+          "following",
+          "followed"
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "english": "The meeting will be followed by a networking reception.",
+        "chinese": "會議後將會舉辦一個社交活動。"
+      },
+      {
+        "english": "All orders are followed by a confirmation email.",
+        "chinese": "所有訂單都會收到一封確認郵件。"
+      }
+    ],
+    "exam_tips": [
+      "理解邏輯順序：此結構表示「A 先發生，然後 B 發生」。在 TOEIC 聽力第三、四部分的行程安排或閱讀第七部分的商務會議議程（Agenda）中，這是一個極其關鍵的時間順序指標。",
+      "掌握被動與主動轉換：'A be followed by B' 的邏輯等同於 'B follows A'。考試時常在題目中使用被動語態，而在選項中改用主動語態或 'After A, B will happen' 來進行換句話說（Paraphrasing）的測驗。",
+      "典型商業情境：最常見於會議流程，例如 'The keynote speech will be followed by a brief networking session'（主題演講後將進行簡短的交流時間），考生需注意 B 才是最後發生的事件。",
+      "注意副詞搭配：常與 'immediately' 或 'shortly' 連用（如：is immediately followed by），用以強調兩個行程之間沒有空檔或間隔極短。",
+      "易混淆詞辨析：區分 'A is followed by B' 與 'A follows B'。前者 A 在前，後者 B 在前。建議透過 'follow'（跟隨）的本義記憶：在 'A be followed by B' 中，B 是那個「跟在後面的跟隨者」。"
+    ]
+  },
+  {
+    "english_word": "a complete line of",
+    "chinese_definition": "完整系列產品/服務",
+    "star_rating": 4,
+    "toeic_score_range": "600-780",
+    "category": "採購與物流",
+    "parts_of_speech": [
+      "adjective",
+      "noun"
+    ],
+    "word_forms": [
+      {
+        "part_of_speech": "adjective",
+        "forms": [
+          "a complete line of",
+          "more complete",
+          "most complete"
+        ]
+      },
+      {
+        "part_of_speech": "noun",
+        "forms": [
+          "a complete line of",
+          "complete lines"
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "english": "We offer a complete line of office supplies, from pens to printers.",
+        "chinese": "我們提供完整的辦公用品系列，從筆到印表機。"
+      },
+      {
+        "english": "The company is expanding its complete line of automotive parts to include electric vehicle components.",
+        "chinese": "該公司正在擴展其完整的汽車零件系列，以包括電動汽車組件。"
+      }
+    ],
+    "exam_tips": [
+      "常見搭配詞：此片語後方常接複數名詞，表示「全系列的產品」，例如 'a complete line of cosmetics' (全系列化妝品) 或 'a complete line of household appliances' (全系列家電)。",
+      "商業情境應用：常見於公司簡介、產品廣告或供應商目錄，旨在強調產品多樣性 (diversity) 與齊全度，滿足一站式購物需求。",
+      "易混淆詞辨析：需區分 'product line' (產品線) 與 'line of work' (職業/行業) 及 'line of credit' (信用額度)，在多益閱讀中必須依據上下文判斷 'line' 的具體商務含義。",
+      "考試常見考點：在 Part 7 閱讀理解中，'a complete line of' 常作為關鍵字，其對應的正確選項常出現 'full range'、'wide selection' 或 'comprehensive' 等詞彙。",
+      "答題注意事項：注意 'line' 是此片語的核心單數名詞，若其在主詞位置，後方的動詞需使用單數形式，例如 'A complete line of products is available'。"
+    ]
+  },
+  {
+    "english_word": "a copy of",
+    "chinese_definition": "一份副本；一份複本（通常指文件或資料）",
+    "star_rating": 5,
+    "toeic_score_range": "400-600",
+    "category": "辦公日常",
+    "parts_of_speech": [
+      "noun phrase"
+    ],
+    "word_forms": [
+      {
+        "part_of_speech": "noun phrase",
+        "forms": [
+          "a copy of"
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "english": "Could you please send me a copy of the contract for review?",
+        "chinese": "您能請寄一份合約副本給我審閱嗎？"
+      },
+      {
+        "english": "The secretary made a copy of the report for each department head.",
+        "chinese": "秘書為各部門主管製作了一份報告副本。"
+      }
+    ],
+    "exam_tips": [
+      "常見搭配詞：在多益中常與文件相關名詞連用，例如 a copy of the contract (合約副本)、a copy of the report (報告複本)、a copy of the receipt (收據副本)。",
+      "聽力測驗陷阱：在聽力第一、二部分中，需特別注意 copy 與 coffee 的發音辨析，考生常因發音相近而誤判情境。",
+      "商業情境應用：常出現在辦公室行政、會議準備或商務書信中，用於要求、轉寄或附上文件，例如：'Please find attached a copy of the agenda.' (隨信附上議程一份)。",
+      "閱讀測驗考點：在第五、六部分文法題中，需注意量詞的變化，若表達多份則需使用 'copies of'；在第七部分閱讀理解中，需區分 hard copy (紙本) 與 digital/electronic copy (電子檔) 的需求。",
+      "易混淆詞辨析：需區分 copy (副本/複印本) 與 original (正本)，在合約簽署或證件提交的情境中，題目常會要求區分是要寄送正本還是影本。"
+    ]
+  },
+  {
+    "english_word": "a couple of",
+    "chinese_definition": "一對，幾個（指兩個）",
+    "star_rating": 5,
+    "toeic_score_range": "0-400",
+    "category": "溝通互動",
+    "parts_of_speech": [
+      "adjective",
+      "determiner"
+    ],
+    "word_forms": [
+      {
+        "part_of_speech": "adjective",
+        "forms": [
+          "a couple of",
+          "more than a couple"
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "english": "We need a couple of revisions before the presentation is finalized.",
+        "chinese": "在簡報最終定稿之前，我們需要做一兩次修改。"
+      },
+      {
+        "english": "Could I see a couple of samples of your latest products, please?",
+        "chinese": "請問我可以看看你們最新產品的幾樣樣品嗎？"
+      }
+    ],
+    "exam_tips": [
+      "語意與數量掌握：a couple of 字面上指「一對」或「兩個」，但在 TOEIC 的商務口語情境中常指「兩三個」。在聽力測驗中，若聽到此詞，對應的正確選項常與數字 2 或 3 相關。",
+      "文法限制：此片語後方必須接「複數可數名詞」（例如：a couple of files, a couple of candidates），不可接不可數名詞。在 Part 5 語法題中需注意名詞單複數的一致性。",
+      "常見商務搭配詞：常用於時間表達，如 in a couple of weeks (幾週內)、for a couple of minutes (幾分鐘)；也常用於討論物品或人員，如 a couple of samples (幾個樣品)。",
+      "易混淆詞辨析：需與 several (好幾個，通常指 3-5 個或更多) 及 a few (一些，強調有但不多) 做區分。a couple of 的數量感通常是最小的。",
+      "聽力答題關鍵：在 Part 2 的 WH-疑問句（特別是 How many 或 When）中，a couple of 是常見的簡短回答方式，考生應直覺反應其代表的短暫時間或極小數量。"
+    ]
+  },
+  {
+    "english_word": "a glass of",
+    "chinese_definition": "一杯（裝液體）",
+    "star_rating": 5,
+    "toeic_score_range": "0-400",
+    "category": "住宿與餐飲",
+    "parts_of_speech": [
+      "noun"
+    ],
+    "word_forms": [
+      {
+        "part_of_speech": "noun",
+        "forms": [
+          "a glass of",
+          "glasses"
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "english": "Could I have a glass of water, please?",
+        "chinese": "請問可以給我一杯水嗎？"
+      },
+      {
+        "english": "The hotel offers complimentary glasses of juice and coffee in the lobby.",
+        "chinese": "飯店在 Lobby 提供免費的果汁和咖啡。"
+      }
+    ],
+    "exam_tips": [
+      "常見搭配詞：通常與冷飲液體連用，如 a glass of water (一杯水), a glass of wine (一杯酒), a glass of juice (一杯果汁)。",
+      "商業情境：在 TOEIC 聽力測驗的商務餐敘、社交社交場合（Networking Events）或餐廳訂餐情境中頻繁出現，描述點餐或待客禮節。",
+      "易混淆詞辨析：a glass of 專指玻璃杯，適合冷飲；a cup of 則多用於陶瓷咖啡杯，適合熱飲（如 tea/coffee）。",
+      "聽力測驗考點：在 Part 1 照片題中，常出現人物手持玻璃杯或桌上擺放飲品的描述；Part 3 對話中則常用於餐廳服務生的詢問。",
+      "語法注意點：注意量詞的單複數變化，兩杯應為 'two glasses of'，在聽力中需注意字尾的 /iz/ 音以區別單複數。"
+    ]
+  },
+  {
+    "english_word": "a great deal",
+    "chinese_definition": "大量的；許多（用於強調數量或程度）",
+    "star_rating": 4,
+    "toeic_score_range": "600-780",
+    "category": "辦公日常",
+    "parts_of_speech": [
+      "adverb",
+      "adjective"
+    ],
+    "word_forms": [
+      {
+        "part_of_speech": "adverb",
+        "forms": [
+          "a great deal"
+        ]
+      },
+      {
+        "part_of_speech": "adjective",
+        "forms": [
+          "a great deal",
+          "more",
+          "most"
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "english": "The company invested a great deal of money in research and development.",
+        "chinese": "公司在研發上投入了大量的資金。"
+      },
+      {
+        "english": "We appreciate your great deal of effort in completing this project.",
+        "chinese": "我們非常感謝您在完成這個項目中付出的巨大努力。"
+      }
+    ],
+    "exam_tips": [
+      "搭配詞與用法：'a great deal of' 後方必須接『不可數名詞』，常見如 effort, money, time, stress, attention。",
+      "詞性功能：除了作為形容詞片語修飾名詞，也可作為副詞使用，意同 'very much'，常用於動詞後方，例如：'He travels a great deal for business.'。",
+      "商業情境：常用於描述大量資源投入或顯著的進步，例如：'The company spent a great deal of money on R&D.' 或 'Our workflow has improved a great deal.'。",
+      "易混淆辨析：需區分 'a great deal of'（接不可數名詞）與 'a great many'（接複數可數名詞）；此外，單獨的 'deal' 在商務情境中常指『交易』，而 'a great deal' 則著重於『程度或量大』。",
+      "考點分析：在 TOEIC Part 5 語法題中，常測驗考生是否知道其後應接不可數名詞；在 Part 7 閱讀理解中，則常用來修飾比較級以加強語氣，如 'a great deal better'。"
+    ]
+  },
+  {
+    "english_word": "a great deal of",
+    "chinese_definition": "大量的；許多（用於不可數名詞）",
+    "star_rating": 4,
+    "toeic_score_range": "600-780",
+    "category": "辦公日常",
+    "parts_of_speech": [
+      "adverb"
+    ],
+    "word_forms": [
+      {
+        "part_of_speech": "adverb",
+        "forms": [
+          "a great deal of"
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "english": "The company invested a great deal of money in research and development.",
+        "chinese": "公司在研發上投入了大量的資金。"
+      },
+      {
+        "english": "We have a great deal of experience in handling international shipments.",
+        "chinese": "我們在處理國際貨運方面擁有豐富的經驗。"
+      }
+    ],
+    "exam_tips": [
+      "修飾詞性與搭配：'a great deal of' 專門用來修飾『不可數名詞』，等同於 much 或 a large amount of。常見搭配包括 a great deal of time, money, effort, pressure 或 information，這在 TOEIC 閱讀 Part 5 語法題中是常見的考點。",
+      "易混淆詞辨析：考生必須區分 'a great deal of' (接不可數名詞) 與 'a great number of' (接可數複數名詞)。如果在填充題空格後看到複數名詞（如 guests, colleagues），則不能選 deal。",
+      "商業應用情境：此片語常用於強調專案的投入、資源的耗費或市場的反應。例如：'The new marketing strategy attracted a great deal of attention.' (新的行銷策略吸引了大量關注)。",
+      "聽力改寫 (Paraphrasing)：在聽力測驗中，對話內容若出現 'a great deal of'，正確選項往往會以 significant, substantial 或 considerable 等形容詞進行換照改寫。",
+      "結構變體注意：'a great deal' 也可以單獨作為副詞使用，用來修飾動詞或形容詞比較級，例如：'The cost is a great deal higher than we expected.' (成本比我們預期的要高出許多)。"
+    ]
+  },
+  {
+    "english_word": "a large attendance",
+    "chinese_definition": "出席人數眾多；參與人數龐大",
+    "star_rating": 4,
+    "toeic_score_range": "600-780",
+    "category": "會議與簡報",
+    "parts_of_speech": [
+      "noun"
+    ],
+    "word_forms": [
+      {
+        "part_of_speech": "noun",
+        "forms": [
+          "a large attendance",
+          "large attendances"
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "english": "The conference saw a large attendance, exceeding all expectations.",
+        "chinese": "這次會議的出席人數非常踴躍，遠超預期。"
+      },
+      {
+        "english": "Due to the large attendance, we're moving the presentation to a larger venue.",
+        "chinese": "由於出席人數眾多，我們將簡報搬到更大的場地。"
+      }
+    ],
+    "exam_tips": [
+      "常見搭配詞：常與動詞 expect (預期)、attract (吸引) 或 draw (吸引) 連用，例如 expect a large attendance (預期有大量出席人數)。",
+      "商業情境應用：主要出現在年度會議、研討會或產品發表會的報告中，用來描述活動參與的盛況。",
+      "易混淆詞辨析：需嚴格區分 attendance (出席人數/出席行為) 與 attendant (服務人員/接待員，如 flight attendant)。在 TOEIC 詞彙題中，若空格前有形容詞 large 或 high，應選擇 attendance。",
+      "聽力與閱讀考點：在閱讀 Part 7 的公告或信件中，若提到『a large attendance』，題目常會連結到『場地變更』或『需要更多座位』等後勤安排的細節。",
+      "形容詞修飾語：除了 large 以外，TOEIC 考試中也常出現 high attendance 或 record attendance (破紀錄的出席人數) 來表達相同情境。"
+    ]
+  },
+  {
+    "english_word": "a letter of gratitude",
+    "chinese_definition": "感謝信；表達感謝的書面信函，通常用於正式場合。",
+    "star_rating": 4,
+    "toeic_score_range": "600-780",
+    "category": "溝通互動",
+    "parts_of_speech": [
+      "noun"
+    ],
+    "word_forms": [
+      {
+        "part_of_speech": "noun",
+        "forms": [
+          "a letter of gratitude",
+          "letters of gratitude"
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "english": "After receiving excellent service, the manager sent a letter of gratitude to the hotel staff.",
+        "chinese": "在獲得了卓越的服務後，經理向酒店員工寄了一封感謝信。"
+      },
+      {
+        "english": "We appreciate your prompt response and have enclosed a letter of gratitude for your assistance.",
+        "chinese": "我們感謝您及時的回覆，並附上了一封感謝信以表達對您協助的感謝。"
+      }
+    ],
+    "exam_tips": [
+      "常見搭配詞與同義替換：常用動詞包括 write, send, express, 或 convey。在 TOEIC 閱讀中，此詞組常與 'a thank-you note' 或 'a message of appreciation' 進行同義替換。",
+      "商業情境應用：主要出現在面試後的後續追蹤（follow-up）、專案結案後的合作感謝，或是針對贊助者與捐款人的致意，展現專業職場禮儀。",
+      "易混淆詞辨析：需嚴格區分 'gratitude'（感激）與 'gratuity'（小費）。前者用於心意表達，後者則出現在餐飲或服務業情境的帳單中，是 TOEIC 極常見的陷阱考點。",
+      "考試出題重點：在 Part 7 的書信閱讀中，若題目詢問『寫信的目的』(What is the purpose of the letter?)，選項若出現 'To express appreciation' 或 'To thank a client'，則該信件通常即為 a letter of gratitude。",
+      "聽力與答題策略：在 Part 3 或 Part 4 的對話與短文報告中，若聽到關鍵字 'appreciate' 或 'thankful'，應立即聯想至 letter of gratitude 相關的正式溝通情境，有助於預測問題答案。"
+    ]
+  },
+  {
+    "english_word": "a loaf of",
+    "chinese_definition": "一條（麵包）；一整條（麵包）",
+    "star_rating": 3,
+    "toeic_score_range": "400-600",
+    "category": "住宿與餐飲",
+    "parts_of_speech": [
+      "noun"
+    ],
+    "word_forms": [
+      {
+        "part_of_speech": "noun",
+        "forms": [
+          "a loaf of",
+          "loaves"
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "english": "Could I have a loaf of whole wheat bread, please?",
+        "chinese": "請問可以給我一條全麥麵包嗎？"
+      },
+      {
+        "english": "The bakery sells fresh loaves of bread every morning.",
+        "chinese": "麵包店每天早上都販售新鮮麵包。"
+      }
+    ],
+    "exam_tips": [
+      "常用搭配詞：此量詞最常接 'bread' (a loaf of bread)，在 TOEIC 聽力的餐飲情境中極為常見，務必掌握其複數型態為 'loaves'。",
+      "商業與生活情境：常出現於 Part 1 照片描述題（如麵包店櫃檯）或 Part 3 辦公室茶水間供應與訂購情境，用於描述整條未切的麵包。",
+      "文法辨析：需區分 'loaf' (整條) 與 'slice' (薄片)，在聽力測驗中，若圖片顯示的是多片吐司，使用 'loaves' 則是錯誤描述。",
+      "拼寫與格位：注意其不規則複數變化 'loaves'，在 Part 5 文法題中可能考查單位詞的單複數一致性。",
+      "字義區別：'loaf' 作為動詞時有 '閒逛、偷懶' 之意，但在 TOEIC 職場溝通情境中，幾乎皆以量詞 '一條' 的意義出現，應優先以此義理解。"
+    ]
+  },
+  {
+    "english_word": "a number of",
+    "chinese_definition": "許多；大量（指不確定數量，通常用於表示多個事物）",
+    "star_rating": 5,
+    "toeic_score_range": "400-600",
+    "category": "辦公日常",
+    "parts_of_speech": [
+      "adjective"
+    ],
+    "word_forms": [
+      {
+        "part_of_speech": "adjective",
+        "forms": [
+          "a number of",
+          "more numerous",
+          "most numerous"
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "english": "A number of employees have expressed concerns about the new policy.",
+        "chinese": "許多員工對新政策表示擔憂。"
+      },
+      {
+        "english": "The company received a number of applications for the marketing position.",
+        "chinese": "公司收到了許多針對行銷職位的申請。"
+      }
+    ],
+    "exam_tips": [
+      "主詞動詞一致性：'a number of' 後接複數名詞時，動詞必須使用『複數』形式（例如：are, have, work），其意思等同於 'several' 或 'many'。",
+      "易混淆詞辨析：極常與 'the number of' 做比較。'the number of' 指的是『...的數量』，焦點在於數量本身，因此動詞必須使用『單數』形式（例如：is, has, works），這是 Part 5 語法找錯題的必考重點。",
+      "商業搭配詞：常與形容詞連用以表達程度，如 'a growing number of'（越來越多的）、'a significant number of'（相當多數量的）、'a large number of'（大量的）。",
+      "聽力與閱讀同義替換：在 TOEIC 聽力 Part 3、4 或閱讀 Part 7 中，題目或選項常將 'a number of' 替換為 'various'、'multiple'、'several' 或 'some'。",
+      "答題注意事項：看到 'number' 時，切勿反射性地選擇單數動詞，務必先辨認冠詞是 'a' 還是 'the'，並確認後方接的是否為可數複數名詞。"
+    ]
+  }
+]
