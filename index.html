@@ -110,6 +110,16 @@ main{ max-width:1080px; margin:0 auto; padding:26px 20px 60px; }
 }
 .quiz-prompt--sentence{ font-size:19px; font-family:'Noto Sans TC',sans-serif; font-weight:500; }
 
+.word-actions-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin:-8px 0 20px; flex-wrap:wrap; }
+.mini-play-btn{
+  display:flex; align-items:center; gap:6px;
+  background:#fdfcf8; border:1.5px solid var(--line); color:var(--ink);
+  padding:9px 15px; border-radius:10px; font-size:12.5px; font-weight:700; cursor:pointer;
+}
+.mini-play-btn:hover{ border-color:var(--gold); background:var(--gold-soft); }
+.word-actions-row .next-btn{ margin-left:auto; }
+.next-btn.hidden{ display:none; }
+
 .options-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 @media (max-width:520px){ .options-grid{ grid-template-columns:1fr; } }
 .option-btn{
@@ -225,6 +235,8 @@ main{ max-width:1080px; margin:0 auto; padding:26px 20px 60px; }
   .option-btn{ padding:12px 14px; font-size:13.5px; }
 
   .listening-controls{ gap:12px; }
+  .word-actions-row{ margin:-4px 0 16px; }
+  .mini-play-btn{ font-size:11.5px; padding:8px 12px; }
   .mask-hint{ font-size:20px; letter-spacing:4px; padding:9px 12px; }
   .listen-form{ flex-direction:column; }
   .submit-btn{ padding:12px; }
@@ -263,6 +275,7 @@ main{ max-width:1080px; margin:0 auto; padding:26px 20px 60px; }
     <button class="mode-tab" id="tab-zh2en"><span class="material-icons-round">g_translate</span>單字英文選擇</button>
     <button class="mode-tab" id="tab-sentence"><span class="material-icons-round">format_quote</span>例句單字選擇</button>
     <button class="mode-tab" id="tab-listening"><span class="material-icons-round">hearing</span>聽力辨識</button>
+    <button class="mode-tab" id="tab-listen2zh"><span class="material-icons-round">headset</span>聽音選中文</button>
   </div>
 
   <div class="panel-grid">
@@ -302,14 +315,15 @@ window.__DEFAULT_VOCAB__ = [{"english_word": "A be followed by B", "chinese_defi
 <script>/* ============ 資料處理 ============ */
 let VOCAB = [];          // 增強後的單字陣列
 let SCORE_RANGES = [];   // 依分數排序的區間清單
-const MODE_KEYS = ['en2zh', 'zh2en', 'sentence', 'listening'];
+const MODE_KEYS = ['en2zh', 'zh2en', 'sentence', 'listening', 'listen2zh'];
 const MODE_META = {
   en2zh:     { label: '單字→中文選擇', icon: 'translate' },
   zh2en:     { label: '中文→單字選擇', icon: 'g_translate' },
   sentence:  { label: '例句挖空選擇', icon: 'format_quote' },
-  listening: { label: '聽力拼寫',     icon: 'hearing' }
+  listening: { label: '聽力拼寫',     icon: 'hearing' },
+  listen2zh: { label: '聽音選中文',   icon: 'headset' }
 };
-const GAP_TABLE = [5, 10, 15, 20, 30, 50]; // Leitner box -> 間隔題數
+const GAP_TABLE = [10, 20, 25, 35, 40, 50]; // 間隔題數：答對直接跳最大值，答錯回到最小值
 
 let STATE = {
   modes: {} // per mode: { queue, correct:{}, wrong:{}, totalCorrect, totalWrong, box:{}, current, awaiting }
@@ -351,7 +365,7 @@ const STATS_KEY = 'toeic_srs_stats_v1';
 function freshModeStat() {
   const correct = {}, wrong = {};
   SCORE_RANGES.forEach(r => { correct[r] = 0; wrong[r] = 0; });
-  return { correct, wrong, totalCorrect: 0, totalWrong: 0, box: {} };
+  return { correct, wrong, totalCorrect: 0, totalWrong: 0, box: {}, correctSeen: new Set() };
 }
 
 function loadStats() {
@@ -367,6 +381,7 @@ function loadStats() {
       base.totalCorrect = saved[m].totalCorrect || 0;
       base.totalWrong = saved[m].totalWrong || 0;
       base.box = saved[m].box || {};
+      base.correctSeen = new Set(saved[m].correctSeen || []);
     }
     STATE.modes[m] = {
       ...base,
@@ -381,7 +396,14 @@ function persistStats() {
   const out = {};
   MODE_KEYS.forEach(m => {
     const s = STATE.modes[m];
-    out[m] = { correct: s.correct, wrong: s.wrong, totalCorrect: s.totalCorrect, totalWrong: s.totalWrong, box: s.box };
+    out[m] = {
+      correct: s.correct,
+      wrong: s.wrong,
+      totalCorrect: s.totalCorrect,
+      totalWrong: s.totalWrong,
+      box: s.box,
+      correctSeen: Array.from(s.correctSeen)
+    };
   });
   try { localStorage.setItem(STATS_KEY, JSON.stringify(out)); } catch (e) { /* ignore quota */ }
 }
@@ -409,14 +431,19 @@ function recordAnswer(mode, wordIdx, correct) {
   const s = STATE.modes[mode];
   const range = VOCAB[wordIdx].toeic_score_range || '未分級';
   if (correct) {
-    s.correct[range] = (s.correct[range] || 0) + 1;
-    s.totalCorrect++;
+    // 重複答對的單字不再列入分數區間分佈與正確率計算，只有該單字「第一次答對」才計入
+    if (!s.correctSeen.has(wordIdx)) {
+      s.correct[range] = (s.correct[range] || 0) + 1;
+      s.totalCorrect++;
+      s.correctSeen.add(wordIdx);
+    }
   } else {
     s.wrong[range] = (s.wrong[range] || 0) + 1;
     s.totalWrong++;
   }
-  const prevBox = s.box[wordIdx] || 1;
-  const nextBox = correct ? Math.min(prevBox + 1, GAP_TABLE.length) : 1;
+
+  // 答對直接跳到最大間隔（代表已熟悉，很久才會複習到）；答錯則回到最小間隔（盡快複習）
+  const nextBox = correct ? GAP_TABLE.length : 1;
   s.box[wordIdx] = nextBox;
   const gap = GAP_TABLE[nextBox - 1];
 
@@ -604,14 +631,15 @@ function renderMode(mode) {
   s.current = wordIdx;
   s.awaiting = true;
 
-  let q;
-  if (mode === 'en2zh') q = buildQuestionEn2Zh(wordIdx);
-  else if (mode === 'zh2en') q = buildQuestionZh2En(wordIdx);
-  else if (mode === 'sentence') q = buildQuestionSentence(wordIdx);
-
   if (mode === 'listening') {
     renderListening(wordIdx);
+  } else if (mode === 'listen2zh') {
+    renderListenChoiceQuestion(mode, buildQuestionEn2Zh(wordIdx));
   } else {
+    let q;
+    if (mode === 'en2zh') q = buildQuestionEn2Zh(wordIdx);
+    else if (mode === 'zh2en') q = buildQuestionZh2En(wordIdx);
+    else if (mode === 'sentence') q = buildQuestionSentence(wordIdx);
     renderChoiceQuestion(mode, q);
   }
   renderStats(mode);
@@ -623,9 +651,19 @@ function renderChoiceQuestion(mode, q) {
     mode === 'zh2en' ? '請選出對應的英文單字/片語' : '請選出最適合填入空格的單字';
   const promptClass = mode === 'sentence' ? 'quiz-prompt quiz-prompt--sentence' : 'quiz-prompt';
 
+  // 單字→中文選擇模式：在題目下方加一排「播放發音」與「下一題」（靠右對齊，答對後才顯示）
+  const actionsRow = mode === 'en2zh' ? `
+    <div class="word-actions-row">
+      <button type="button" id="speak-word-btn" class="mini-play-btn">
+        <span class="material-icons-round">volume_up</span> 播放發音
+      </button>
+      <button type="button" id="inline-next-btn" class="next-btn hidden">下一題 <span class="material-icons-round" style="font-size:18px;vertical-align:-4px;">arrow_forward</span></button>
+    </div>` : '';
+
   box.innerHTML = `
     <p class="quiz-label">${promptLabel}</p>
     <div class="${promptClass}">${escapeHtml(q.prompt)}</div>
+    ${actionsRow}
     <div class="options-grid" id="options-grid"></div>
     <div id="feedback-panel" class="feedback-panel hidden"></div>
   `;
@@ -637,6 +675,11 @@ function renderChoiceQuestion(mode, q) {
     b.addEventListener('click', () => handleChoiceAnswer(mode, q, opt, b));
     grid.appendChild(b);
   });
+
+  if (mode === 'en2zh') {
+    el('speak-word-btn').addEventListener('click', () => speakWord(q.word.english_word));
+    el('inline-next-btn').addEventListener('click', () => renderMode(mode));
+  }
 }
 
 function handleChoiceAnswer(mode, q, chosen, btnEl) {
@@ -651,7 +694,35 @@ function handleChoiceAnswer(mode, q, chosen, btnEl) {
   });
   recordAnswer(mode, q.word.idx, correct);
   showFeedback(mode, correct, q.word, mode === 'sentence' ? q.example : null);
+  if (mode === 'en2zh') {
+    const inlineNext = el('inline-next-btn');
+    if (inlineNext) inlineNext.classList.remove('hidden');
+  }
   renderStats(mode);
+}
+
+function renderListenChoiceQuestion(mode, q) {
+  const box = el('quiz-area');
+  box.innerHTML = `
+    <p class="quiz-label">聆聽發音，選出正確的中文意思</p>
+    <div class="listening-controls">
+      <button type="button" id="listen-choice-play-btn" class="play-btn">
+        <span class="material-icons-round">volume_up</span> 播放發音
+      </button>
+    </div>
+    <div class="options-grid" id="options-grid"></div>
+    <div id="feedback-panel" class="feedback-panel hidden"></div>
+  `;
+  el('listen-choice-play-btn').addEventListener('click', () => speakWord(q.word.english_word));
+  const grid = el('options-grid');
+  q.options.forEach(opt => {
+    const b = document.createElement('button');
+    b.className = 'option-btn';
+    b.textContent = opt;
+    b.addEventListener('click', () => handleChoiceAnswer(mode, q, opt, b));
+    grid.appendChild(b);
+  });
+  setTimeout(() => speakWord(q.word.english_word), 300);
 }
 
 function renderListening(wordIdx) {
@@ -705,6 +776,9 @@ function showFeedback(mode, correct, word, example, userInput) {
   const wrongLine = (!correct && userInput !== undefined)
     ? `<p class="feedback-your-answer">你的輸入：<span>${escapeHtml(userInput || '（空白）')}</span></p>` : '';
 
+  const nextBtnHtml = (mode === 'en2zh') ? '' :
+    `<button id="next-btn" class="next-btn">下一題 <span class="material-icons-round" style="font-size:18px;vertical-align:-4px;">arrow_forward</span></button>`;
+
   panel.innerHTML = `
     <div class="feedback-head ${correct ? 'feedback-head--correct' : 'feedback-head--wrong'}">
       <span class="material-icons-round">${correct ? 'check_circle' : 'cancel'}</span>
@@ -715,9 +789,11 @@ function showFeedback(mode, correct, word, example, userInput) {
     ${wrongLine}
     ${exampleHtml}
     ${tip ? `<p class="feedback-tip"><span class="material-icons-round" style="font-size:16px;vertical-align:-3px;">lightbulb</span> ${escapeHtml(tip)}</p>` : ''}
-    <button id="next-btn" class="next-btn">下一題 <span class="material-icons-round" style="font-size:18px;vertical-align:-4px;">arrow_forward</span></button>
+    ${nextBtnHtml}
   `;
-  el('next-btn').addEventListener('click', () => renderMode(mode));
+  if (mode !== 'en2zh') {
+    el('next-btn').addEventListener('click', () => renderMode(mode));
+  }
 }
 
 function renderStats(mode) {

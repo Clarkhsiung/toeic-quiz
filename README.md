@@ -37,3 +37,5 @@ your-repo/
   python -m http.server 8000
   ```
   再開啟 `http://localhost:8000/index.html`。直接用 `file://` 開啟時瀏覽器會封鎖 fetch，此時會自動退回內建的少量範例資料。
+> **資料庫來源與授權聲明**  
+> **來源名稱：** [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/)
